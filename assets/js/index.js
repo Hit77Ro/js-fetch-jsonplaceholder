@@ -45,7 +45,7 @@ const renderUsers = (data) => {
 const fetchPosts = async (id) => {
   try {
     const data = await fetcher(
-      `httd://jsonplaceholder.typicode.com/posts?userId=${id}`
+      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
     );
     renderPosts(data);
   } catch (error) {
