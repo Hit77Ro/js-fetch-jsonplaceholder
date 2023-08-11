@@ -1,0 +1,111 @@
+@use "../abstracts/variables" as *;
+:root {
+  --_size: 1.8rem;
+  --_radius: 0.2em;
+  /* Light Mode */
+  --bg--light: white;
+  --txt--light: ;
+  --accent--light: orange;
+  --accent1--light: ;
+  --muted--light: ;
+  /* Dark Mode */
+  --bg--dark: black;
+  --txt--dark: ;
+  --accent--dark: ;
+  --accent1--dark: ;
+  --muted--dark: ;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--bg--dark);
+    --txt: var(--txt--dark);
+    --accent: var(--accent--dark);
+    --accent1: var(--accent1--dark);
+    --muted: var(--muted--dark);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--bg--light);
+    --txt: var(--txt--light);
+    --accent: var(--accent--light);
+    --accent1: var(--accent1--light);
+    --muted: var(--muted--light);
+    color-scheme: light;
+  }
+}
+
+// set this attribute to html tag  => be controled with a button (in js)
+[color-scheme="dark"] {
+  --bg: var(--bg--dark);
+  --txt: var(--txt--dark);
+  --accent: var(--accent--dark);
+  --accent1: var(--accent1--dark);
+  --muted: var(--muted--dark);
+  color-scheme: dark;
+}
+
+[color-scheme="light"] {
+  --bg: var(--bg--light);
+  --txt: var(--txt--light);
+  --accent: var(--accent--light);
+  --accent1: var(--accent1--light);
+  --muted: var(--muted--light);
+  color-scheme: light;
+}
+
+.container {
+  font-family: "Cairo";
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  > * {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 2px rgba(black, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    > * {
+      padding: inherit;
+      border-radius: inherit;
+      box-shadow: inherit;
+    }
+  }
+  .content {
+    align-items: flex-start;
+    flex-grow: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    transition: 0.2s linear;
+    &.animate {
+      opacity: 0;
+    }
+  }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &.active {
+      background-color: rgba(241, 128, 87, 0.623);
+    }
+  }
+  .post {
+    padding: 20px;
+    &-title {
+      color: orangered;
+      font-size: 20px;
+    }
+  }
+}
